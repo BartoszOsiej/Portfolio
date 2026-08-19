@@ -6,7 +6,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: '🎮 VIVIA: Beyond the Known',
-      link: { type: 'doc', docId: 'projects/vivia/index' },
+      link: { type: 'doc', id: 'projects/vivia/index' },
       items: [
         'projects/vivia/architecture',
         'projects/vivia/ai-engine',
@@ -19,7 +19,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: '🔬 Halcyon — eBPF Monitor',
-      link: { type: 'doc', docId: 'projects/halycon-ebpf/index' },
+      link: { type: 'doc', id: 'projects/halycon-ebpf/index' },
       items: [
         'projects/halycon-ebpf/architecture',
         'projects/halycon-ebpf/ebpf-program',
@@ -30,7 +30,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: '📜 Externum Language',
-      link: { type: 'doc', docId: 'projects/externum/index' },
+      link: { type: 'doc', id: 'projects/externum/index' },
       items: [
         'projects/externum/syntax',
         'projects/externum/compiler',

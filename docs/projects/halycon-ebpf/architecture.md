@@ -86,7 +86,7 @@ PerfBuffer → Deserialise → EventTracker → HeuristicEngine → TUI
 
 ### Process Tracking
 
-- Maintains a map of PID → {name, parent, start_time, file_ops}
+- Maintains a map of PID to process info (name, parent, start_time, file_ops)
 - Process tree construction from PPID chains
 - Zombie process cleanup on exit events
 - Bounded memory: oldest processes evicted when map exceeds limit
