@@ -1,7 +1,6 @@
 {
   "name": "bartosz-osiej-portfolio",
   "version": "1.0.0",
-  "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
@@ -41,5 +40,9 @@
   },
   "engines": {
     "node": ">=18.0"
-  }
+  },
+  "repository": {
+    "url": "https://github.com/BartoszOsiej/Portfolio"
+  },
+  "license": "MIT"
 }
