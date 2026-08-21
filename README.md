@@ -7,6 +7,7 @@
 [![Live](https://img.shields.io/badge/live-bartoszosiej.github.io-2ea043?style=for-the-badge&logo=githubpages)](https://bartoszosiej.github.io/Portfolio/)
 ![Docusaurus](https://img.shields.io/badge/Docusaurus-dark_aurora-FF6B35?style=for-the-badge&logo=docusaurus)
 [![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)](LICENSE)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/BartoszOsiej/Portfolio/badge)](https://scorecard.dev/viewer/?uri=github.com/BartoszOsiej/Portfolio)
 
 **Professional portfolio site showcasing production-grade systems.**
 
