@@ -11,6 +11,8 @@
 
 **Professional portfolio site showcasing production-grade systems.**
 
+> 🇵🇱 [Wersja polska](README.pl.md)
+
 **→ [bartoszosiej.github.io/Portfolio](https://bartoszosiej.github.io/Portfolio/)**
 
 </div>
