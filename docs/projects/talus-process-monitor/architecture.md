@@ -3,12 +3,12 @@ sidebar_position: 2
 title: Architecture
 ---
 
-# Halcyon — Architecture
+# Talus — Architecture
 
 ## Project Structure
 
 ```
-halcyon-process-monitor/
+talus-process-monitor/
 ├── Cargo.toml                 # Workspace root
 ├── build.sh                   # Build script (nightly for eBPF, stable for TUI)
 ├── src/
@@ -16,7 +16,7 @@ halcyon-process-monitor/
 │   ├── monitor.rs             # eBPF loading, perf reader, event processing
 │   ├── tracker.rs             # Per-process state tracking
 │   ├── heuristic.rs           # Sliding-window ransomware detection
-│   └── tui.rs                 # ratatui dashboard rendering
+│   └── tui.rs                 # 7-panel frankentui (ftui) cyberpunk interface
 ├── process-monitor-ebpf/      # Kernel side (#![no_std], aya-ebpf)
 │   ├── Cargo.toml
 │   ├── src/
@@ -82,7 +82,7 @@ PerfBuffer → Deserialise → EventTracker → HeuristicEngine → TUI
 2. **Deserialise** — bincode decode into Rust structs
 3. **EventTracker** — maintains per-process state (PID → process tree)
 4. **HeuristicEngine** — sliding-window analysis for ransomware detection
-5. **TUI render** — ratatui draws the dashboard every 100ms
+5. **TUI render** — frankentui draws the 7-panel dashboard every 100ms
 
 ### Process Tracking
 

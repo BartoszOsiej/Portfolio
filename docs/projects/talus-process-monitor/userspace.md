@@ -3,7 +3,7 @@ sidebar_position: 4
 title: Userspace TUI
 ---
 
-# Halcyon — Userspace TUI
+# Talus — Userspace TUI
 
 ## Overview
 
@@ -25,7 +25,7 @@ state, runs the ransomware heuristic, and renders a real-time terminal UI.
                                                   │
                                            ┌──────▼───────┐
                                            │  TUI Render  │
-                                           │  (ratatui)   │
+                                           │  (frankentui)│
                                            └──────────────┘
 ```
 
@@ -79,7 +79,7 @@ When triggered, the TUI shows:
 ## TUI Layout
 
 ```
-┌─ Halcyon eBPF Monitor ─────────────────────────────────────┐
+┌─ Talus eBPF Monitor ───────────────────────────────────────┐
 │ Process Tree           │ File Operations      │ Alerts      │
 │ ├─ systemd (1)         │ /etc/passwd   READ   │             │
 │ │  ├─ sshd (1234)      │ /var/log/auth WRITE │             │

@@ -18,13 +18,13 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: '🔬 Halcyon — eBPF Monitor',
-      link: { type: 'doc', id: 'projects/halycon-ebpf/index' },
+      label: '🔬 Talus — eBPF Endpoint Security',
+      link: { type: 'doc', id: 'projects/talus-process-monitor/index' },
       items: [
-        'projects/halycon-ebpf/architecture',
-        'projects/halycon-ebpf/ebpf-program',
-        'projects/halycon-ebpf/userspace',
-        'projects/halycon-ebpf/performance',
+        'projects/talus-process-monitor/architecture',
+        'projects/talus-process-monitor/ebpf-program',
+        'projects/talus-process-monitor/userspace',
+        'projects/talus-process-monitor/performance',
       ],
     },
     {

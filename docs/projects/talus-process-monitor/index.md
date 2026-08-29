@@ -1,26 +1,27 @@
 ---
 sidebar_position: 1
-title: Halcyon — eBPF Process Monitor
+title: Talus — eBPF Endpoint Security Agent
 ---
 
 import ScrollReveal from '@site/src/components/ScrollReveal'
 import GlowCard from '@site/src/components/GlowCard'
 
-# Halcyon — eBPF Process Monitor
+# Talus — eBPF Endpoint Security Agent
 
-> **Real-time, eBPF-based process and file-operation telemetry for Linux.
-> Kernel-side tracepoint programs, per-CPU perf buffers, sliding-window
-> ransomware heuristic, ratatui TUI dashboard.**
+> **eBPF endpoint security agent for Linux — detect ransomware behaviour,
+> respond at the kernel edge. Kernel-side tracepoint programs, per-CPU perf
+> buffers, sliding-window heuristic, automated SIGKILL response, FrankenTUI.**
 
 <ScrollReveal>
 
 ## What It Does
 
-Halcyon hooks into the Linux kernel at the **tracepoint level** — capturing every
-`execve` (process creation) and `openat` (file open) without polling, without
-`/proc` parsing, without library dependencies. Events stream through lock-free
-per-CPU perf buffers into a userspace TUI that visualizes process trees,
-file operations, and security anomalies in real time.
+Talus hooks into the Linux kernel at the **tracepoint level** — capturing every
+`execve`, `openat`, `connect`, `accept`, `sendto` and `recvfrom` without polling,
+without `/proc` parsing, without library dependencies. Events stream through
+lock-free per-CPU perf buffers into a userspace detection engine that
+visualizes process trees, network connections, and file operations in real time,
+automatically terminating offending processes.
 
 ## Key Features
 
@@ -53,8 +54,8 @@ kernel does the heavy lifting.
 
 ### 🛡️ Ransomware Detection
 Sliding-window heuristic monitors file rename velocity and entropy changes.
-When a process exhibits ransomware-like behavior (mass renames + high entropy),
-Halcyon flags it in real time with process tree context.
+When a process exhibits ransomware-like behavior (mass opens + high entropy),
+Talus flags it in real time and sends SIGKILL with full process tree context.
 
 </div>
 </GlowCard>
@@ -62,9 +63,9 @@ Halcyon flags it in real time with process tree context.
 <GlowCard>
 <div>
 
-### 🖥️ TUI Dashboard
-ratatui-powered terminal UI with per-process tracking, file operation
-history, and live event streaming. Keyboard-driven, zero mouse dependency.
+### 🖥️ FrankenTUI Dashboard
+7-panel cyberpunk terminal UI — events, process tree, network connections,
+top files, extensions, alerts, heatmap. Keyboard-driven, zero mouse dependency.
 
 </div>
 </GlowCard>
@@ -73,7 +74,7 @@ history, and live event streaming. Keyboard-driven, zero mouse dependency.
 <div>
 
 ### ⚡ Zero Dependencies
-No userspace eBPF library required — the kernel does everything. Halcyon
+No userspace eBPF library required — the kernel does everything. Talus
 loads the compiled eBPF object directly via `aya::Ebpf::load_file`. The
 userspace side is pure Rust stable.
 
@@ -127,7 +128,7 @@ and graceful degradation under load. No data leaves the machine.
          └───────────┼────────────┘
                      ▼
               ┌──────────────┐
-              │  ratatui TUI │
+              │  FrankenTUI  │
               └──────────────┘
 ```
 
@@ -138,7 +139,7 @@ and graceful degradation under load. No data leaves the machine.
 | Kernel programs | Rust `#![no_std]`, aya-ebpf |
 | Build (kernel) | Rust nightly, `-Z build-std` |
 | Userspace | Rust stable, aya |
-| TUI | ratatui |
+| TUI | FrankenTUI (ftui) |
 | Perf reader | aya-ebpf perf buffer API |
 | Target | Linux 5.8+ (eBPF + tracepoint support) |
 

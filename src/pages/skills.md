@@ -37,7 +37,7 @@ tracepoints, and building userspace TUI dashboards that visualize kernel events.
 - **Perf buffers** — lock-free per-CPU event streaming to userspace
 - **Heuristics** — sliding-window ransomware detection (entropy, rename velocity)
 - **Build** — nightly Rust + `-Z build-std` for kernel targets
-- **Userspace** — ratatui TUI, async perf reader, per-process tracking
+- **Userspace** — FrankenTUI (ftui), async perf reader, per-process tracking
 
 </ScrollReveal>
 
@@ -109,7 +109,7 @@ Full-stack web development, CI/CD pipelines, and deployment automation.
 | Project | Stack | Status |
 |---|---|---|
 | **VIVIA: Beyond the Known** | Rust, wgpu, neural nets, multiplayer | Shipping on EGS |
-| **Halcyon eBPF Monitor** | Rust, eBPF, aya, ratatui | Production quality |
+| **Talus eBPF Monitor** | Rust, eBPF, aya, FrankenTUI | Production quality |
 | **Externum Language** | Python, compiler, WASM | 120/120 tests |
 | **AURORA OS** | Web OS, React, plugins | Active development |
 | **N2 Mesh** | WebRTC, P2P, MQTT | Deployed |

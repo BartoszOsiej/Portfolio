@@ -26,11 +26,11 @@ Three production-grade systems, each solving a hard problem end-to-end.
 />
 
 <ProjectCard
-  link="/projects/halycon-ebpf/"
+  link="/projects/talus-process-monitor/"
   icon="🔬"
-  title="Halcyon — eBPF Process Monitor"
-  description="Real-time process and file-operation telemetry for Linux — kernel-side eBPF tracepoints, per-CPU perf buffers, sliding-window ransomware heuristic, ratatui TUI. Zero userspace library dependencies."
-  tags={['Rust', 'eBPF', 'Aya', 'ratatui', 'Linux Kernel']}
+  title="Talus — eBPF Endpoint Security Agent"
+  description="eBPF endpoint security agent for Linux — detect ransomware behaviour, respond at the kernel edge. execve/openat/connect tracepoints, per-CPU perf buffers, sliding-window heuristic, automated SIGKILL response, FrankenTUI."
+  tags={['Rust', 'eBPF', 'Aya', 'FrankenTUI', 'Linux Kernel']}
   tint="#10b981"
 />
 
@@ -52,7 +52,7 @@ Three production-grade systems, each solving a hard problem end-to-end.
 | Project | Stack | Status | Tests |
 |---|---|---|---|
 | [VIVIA: Beyond the Known](/projects/vivia/) | Rust, wgpu, neural nets | Shipping on EGS | 282 passing |
-| [Halcyon eBPF Monitor](/projects/halycon-ebpf/) | Rust, eBPF, aya | Production quality | — |
+| [Talus eBPF Monitor](/projects/talus-process-monitor/) | Rust, eBPF, aya | Production quality | — |
 | [Externum Language](/projects/externum/) | Python, compiler | 120/120 tests | 120 passing |
 | AURORA OS | Web OS, React | Active | — |
 | N2 Mesh (P2P) | WebRTC, MQTT | Deployed | — |

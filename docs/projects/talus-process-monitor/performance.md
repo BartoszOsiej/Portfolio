@@ -3,7 +3,7 @@ sidebar_position: 5
 title: Performance
 ---
 
-# Halcyon — Performance
+# Talus — Performance
 
 ## Overhead
 
@@ -20,7 +20,7 @@ title: Performance
 
 | Tool | Method | Overhead | Granularity |
 |---|---|---|---|
-| **Halcyon** | eBPF tracepoints | < 1% CPU | Syscall-level |
+| **Talus** | eBPF tracepoints | < 1% CPU | Syscall-level |
 | `auditd` | Audit framework | 2-5% CPU | Rule-based |
 | `sysdig` | ptrace/kit | 3-8% CPU | Syscall-level |
 | `inotify` | Filesystem hooks | < 1% (files only) | File-level |

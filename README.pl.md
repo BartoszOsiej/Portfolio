@@ -20,7 +20,7 @@
 | | Projekt | Stack |
 |---|---------|-------|
 | 🧬 | **VIVIA: Beyond the Known** — komercyjny silnik voxelowy z neural terrain | Rust · wgpu · sieci neuronowe |
-| 🔬 | **Halcyon — eBPF Monitor** — telemetria jądra w czasie rzeczywistym dla Linuxa | Rust · eBPF · aya |
+| 🔬 | **Talus — eBPF Endpoint Security** — wykrywaj ransomware, reaguj na krawędzi jądra | Rust · eBPF · aya |
 | ⚡ | **Externum Language** — własny język programowania, trzy targety kompilacji | Python · kompilator · WebAssembly |
 
 ## Tech

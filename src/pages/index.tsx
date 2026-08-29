@@ -7,7 +7,7 @@ import GlowCard from '@site/src/components/GlowCard'
 
 export default function Home(): React.JSX.Element {
   const viviaUrl = useBaseUrl('/projects/vivia/')
-  const ebpfUrl = useBaseUrl('/projects/halycon-ebpf/')
+  const ebpfUrl = useBaseUrl('/projects/talus-process-monitor/')
   const externumUrl = useBaseUrl('/projects/externum/')
   const aboutUrl = useBaseUrl('/about/')
   const skillsUrl = useBaseUrl('/skills/')
@@ -96,16 +96,16 @@ export default function Home(): React.JSX.Element {
               }}>
                 <div className="glow" aria-hidden="true" />
                 <div className="icon" style={{ backgroundColor: 'rgba(16,185,129,0.15)' }}>🔬</div>
-                <h3>Halcyon — eBPF Monitor</h3>
-                <p>Real-time process and file-operation telemetry for Linux — kernel-side eBPF
-                   tracepoints (aya-ebpf), per-CPU perf buffers, sliding-window ransomware
-                   heuristic, and a ratatui TUI dashboard. Zero dependencies on userspace
-                   library versions.</p>
+                <h3>Talus — eBPF Endpoint Security</h3>
+                <p>eBPF endpoint security agent for Linux — detect ransomware behaviour,
+                   respond at the kernel edge. Kernel-side tracepoints (aya-ebpf),
+                   per-CPU perf buffers, sliding-window heuristic, automated SIGKILL
+                   response, and a 7-panel FrankenTUI dashboard.</p>
                 <div className="tags">
                   <span className="tag">Rust</span>
                   <span className="tag">eBPF</span>
                   <span className="tag">Aya</span>
-                  <span className="tag">ratatui</span>
+                  <span className="tag">FrankenTUI</span>
                   <span className="tag">Linux Kernel</span>
                 </div>
                 <span className="arrow" aria-hidden="true">→</span>

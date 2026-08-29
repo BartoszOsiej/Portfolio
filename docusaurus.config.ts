@@ -68,7 +68,7 @@ const config: Config = {
           type: 'dropdown', position: 'left', label: 'Deep Dives',
           items: [
             { type: 'doc', docId: 'projects/vivia/index', label: 'VIVIA' },
-            { type: 'doc', docId: 'projects/halycon-ebpf/index', label: 'eBPF — Halcyon' },
+            { type: 'doc', docId: 'projects/talus-process-monitor/index', label: 'eBPF — Talus' },
             { type: 'doc', docId: 'projects/externum/index', label: 'Externum' },
           ],
         },
@@ -95,7 +95,7 @@ const config: Config = {
           title: 'Projects',
           items: [
             { label: 'VIVIA: Beyond the Known', to: '/projects/vivia/' },
-            { label: 'Halcyon — eBPF Monitor', to: '/projects/halycon-ebpf/' },
+            { label: 'Talus — eBPF Endpoint Security', to: '/projects/talus-process-monitor/' },
             { label: 'Externum Language', to: '/projects/externum/' },
           ],
         },

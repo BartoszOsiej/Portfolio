@@ -3,11 +3,11 @@ sidebar_position: 3
 title: eBPF Kernel Program
 ---
 
-# Halcyon — eBPF Kernel Program
+# Talus — eBPF Kernel Program
 
 ## Overview
 
-The kernel side of Halcyon is a `#![no_std]` Rust crate compiled to BPF bytecode
+The kernel side of Talus is a `#![no_std]` Rust crate compiled to BPF bytecode
 using `aya-ebpf`. It runs entirely in kernel space — no heap allocation, no system
 calls, no userspace dependencies.
 
@@ -102,4 +102,4 @@ Requires:
 - **No unsafe in userspace** — all unsafe is confined to the eBPF kernel code
 - **Verifier-guaranteed** — the kernel verifier proves memory safety before loading
 - **No data leaves the machine** — events are processed locally only
-- **Graceful degradation** — if eBPF loading fails, Halcyon exits cleanly
+- **Graceful degradation** — if eBPF loading fails, Talus exits cleanly

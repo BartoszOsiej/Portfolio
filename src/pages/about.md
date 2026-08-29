@@ -29,10 +29,11 @@ the Epic Games Store. It features procedural terrain with real-world NASA climat
 an embedded neural network (MeMLP) that learns while you play, multiplayer TCP networking,
 procedural audio, and a 60-species creature system with AI-generated 3D models.
 
-**Kernel Telemetry.** [Halcyon](/projects/halycon-ebpf/) is a real-time eBPF-based process
-monitor for Linux — kernel-side tracepoints capture every `execve`/`openat`, stream events
-into userspace through per-CPU perf buffers, and a sliding-window heuristic detects
-ransomware behavior in real time. Built with `#![no_std]` Rust on nightly.
+**Kernel Telemetry.** [Talus](/projects/talus-process-monitor/) is an eBPF-based endpoint
+security agent for Linux — kernel-side tracepoints capture `execve`/`openat`/`connect`/
+`accept`/`sendto`/`recvfrom`, stream events into userspace through per-CPU perf buffers,
+a sliding-window heuristic detects ransomware behavior, and automated `SIGKILL` response
+terminates offending processes. Built with `#![no_std]` Rust on nightly, FrankenTUI.
 
 **Programming Languages.** [Externum](/projects/externum/) is a custom language that
 compiles to Python, Bash, and binary — with a REPL, module system, standard library,
