@@ -88,7 +88,7 @@ Six production-grade systems, each solving a hard problem end-to-end.
 ---
 
 <div style={{ textAlign: 'center', padding: '2rem 0' }}>
-  <a className="btn-primary" href="mailto:bartosz.osiej@proton.me" style={{
+  <a className="btn-primary" href="mailto:mmc29213@gmail.com" style={{
     display: 'inline-block', padding: '0.75rem 1.5rem', borderRadius: 12,
     background: 'linear-gradient(135deg, #6366f1, #a855f7)', color: '#fff',
     fontWeight: 700, textDecoration: 'none',

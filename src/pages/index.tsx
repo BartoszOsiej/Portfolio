@@ -35,7 +35,7 @@ export default function Home(): React.JSX.Element {
             <a className="btn-primary" href={viviaUrl}>🎮 VIVIA</a>
             <a className="btn-outline" href={ebpfUrl}>🔬 eBPF Monitor</a>
             <a className="btn-outline" href={externumUrl}>📜 Externum</a>
-            <a className="btn-email" href="mailto:bartosz.osiej@proton.me">✉ Contact</a>
+            <a className="btn-email" href="mailto:mmc29213@gmail.com">✉ Contact</a>
           </div>
         </section>
 
@@ -248,7 +248,7 @@ export default function Home(): React.JSX.Element {
               problems — kernel code, game engines, compilers, or distributed systems.
             </p>
             <div className="hero-actions">
-              <a className="btn-primary" href="mailto:bartosz.osiej@proton.me">✉ Get in Touch</a>
+              <a className="btn-primary" href="mailto:mmc29213@gmail.com">✉ Get in Touch</a>
               <a className="btn-outline" href="https://github.com/BartoszOsiej">GitHub →</a>
               <a className="btn-outline" href={skillsUrl}>Full Skills →</a>
             </div>

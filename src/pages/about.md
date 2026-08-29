@@ -61,7 +61,7 @@ explains the why.
 I'm looking for systems engineering roles where I can work on hard problems:
 kernel code, game engines, compilers, or distributed systems.
 
-📧 **bartosz.osiej@proton.me**
+📧 **mmc29213@gmail.com**
 🐙 **[github.com/BartoszOsiej](https://github.com/BartoszOsiej)**
 
 </div>

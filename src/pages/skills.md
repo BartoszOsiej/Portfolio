@@ -219,6 +219,6 @@ Every repository runs the same production-grade pipeline:
 
 **Let's build something together.**
 
-📧 [bartosz.osiej@proton.me](mailto:bartosz.osiej@proton.me) · 🐙 [GitHub](https://github.com/BartoszOsiej)
+📧 [mmc29213@gmail.com](mailto:mmc29213@gmail.com) · 🐙 [GitHub](https://github.com/BartoszOsiej)
 
 </div>

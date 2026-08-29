@@ -81,7 +81,7 @@ const config: Config = {
           'aria-label': 'GitHub',
         },
         {
-          href: 'mailto:bartosz.osiej@proton.me',
+          href: 'mailto:mmc29213@gmail.com',
           position: 'right',
           className: 'header-email-link',
           'aria-label': 'Email',
@@ -104,7 +104,7 @@ const config: Config = {
           items: [
             { label: 'GitHub', href: 'https://github.com/BartoszOsiej' },
             { label: 'LinkedIn', href: 'https://linkedin.com/in/bartoszosiej' },
-            { label: 'bartosz.osiej@proton.me', href: 'mailto:bartosz.osiej@proton.me' },
+            { label: 'mmc29213@gmail.com', href: 'mailto:mmc29213@gmail.com' },
           ],
         },
         {
