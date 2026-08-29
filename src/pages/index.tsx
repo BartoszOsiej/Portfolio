@@ -9,6 +9,9 @@ export default function Home(): React.JSX.Element {
   const viviaUrl = useBaseUrl('/projects/vivia/')
   const ebpfUrl = useBaseUrl('/projects/talus-process-monitor/')
   const externumUrl = useBaseUrl('/projects/externum/')
+  const cyberforgeUrl = 'https://github.com/BartoszOsiej/CyberForge'
+  const quantumshieldUrl = 'https://github.com/BartoszOsiej/quantum-shield'
+  const fortisUrl = 'https://github.com/BartoszOsiej/fortis'
   const aboutUrl = useBaseUrl('/about/')
   const skillsUrl = useBaseUrl('/skills/')
 
@@ -45,11 +48,11 @@ export default function Home(): React.JSX.Element {
                 <div className="label">Lines of Rust</div>
               </div>
               <div className="stat-card">
-                <div className="num">282</div>
+                <div className="num">400+</div>
                 <div className="label">Tests Passing</div>
               </div>
               <div className="stat-card">
-                <div className="num">3</div>
+                <div className="num">6</div>
                 <div className="label">Production Systems</div>
               </div>
               <div className="stat-card">
@@ -65,7 +68,7 @@ export default function Home(): React.JSX.Element {
           <section className="home-section">
             <h2>🚀 Featured Projects</h2>
             <p className="section-intro">
-              Three production-grade systems, each solving a hard problem end-to-end.
+              Six production-grade systems, each solving a hard problem end-to-end.
             </p>
             <div className="project-grid">
               <a className="project-card" href={viviaUrl} onMouseMove={(e) => {
@@ -128,6 +131,66 @@ export default function Home(): React.JSX.Element {
                   <span className="tag">WebAssembly</span>
                   <span className="tag">REPL</span>
                   <span className="tag">120 Tests</span>
+                </div>
+                <span className="arrow" aria-hidden="true">→</span>
+              </a>
+
+              <a className="project-card" href={cyberforgeUrl} onMouseMove={(e) => {
+                const r = e.currentTarget.getBoundingClientRect()
+                e.currentTarget.style.setProperty('--x', `${e.clientX - r.left}px`)
+                e.currentTarget.style.setProperty('--y', `${e.clientY - r.top}px`)
+              }}>
+                <div className="glow" aria-hidden="true" />
+                <div className="icon" style={{ backgroundColor: 'rgba(244,114,182,0.15)' }}>🔒</div>
+                <h3>CyberForge</h3>
+                <p>Four Rust security tools as one workspace — port scanner, web scanner,
+                   hash cracker, packet analyzer. Each shipped separately on crates.io.
+                   29/29 tests green.</p>
+                <div className="tags">
+                  <span className="tag">Rust</span>
+                  <span className="tag">Tokio</span>
+                  <span className="tag">libpcap</span>
+                  <span className="tag">4 Tools</span>
+                </div>
+                <span className="arrow" aria-hidden="true">→</span>
+              </a>
+
+              <a className="project-card" href={quantumshieldUrl} onMouseMove={(e) => {
+                const r = e.currentTarget.getBoundingClientRect()
+                e.currentTarget.style.setProperty('--x', `${e.clientX - r.left}px`)
+                e.currentTarget.style.setProperty('--y', `${e.clientY - r.top}px`)
+              }}>
+                <div className="glow" aria-hidden="true" />
+                <div className="icon" style={{ backgroundColor: 'rgba(99,102,241,0.15)' }}>🛡️</div>
+                <h3>QuantumShield</h3>
+                <p>Post-quantum file encryption CLI — ML-KEM-768 key exchange + AES-256-GCM
+                   + HKDF. NIST FIPS 203 compliant, fuzz-tested. Quantum-safe before
+                   quantum computers arrive.</p>
+                <div className="tags">
+                  <span className="tag">Rust</span>
+                  <span className="tag">Cryptography</span>
+                  <span className="tag">NIST</span>
+                  <span className="tag">FIPS 203</span>
+                </div>
+                <span className="arrow" aria-hidden="true">→</span>
+              </a>
+
+              <a className="project-card" href={fortisUrl} onMouseMove={(e) => {
+                const r = e.currentTarget.getBoundingClientRect()
+                e.currentTarget.style.setProperty('--x', `${e.clientX - r.left}px`)
+                e.currentTarget.style.setProperty('--y', `${e.clientY - r.top}px`)
+              }}>
+                <div className="glow" aria-hidden="true" />
+                <div className="icon" style={{ backgroundColor: 'rgba(16,185,129,0.15)' }}>🔐</div>
+                <h3>Fortis</h3>
+                <p>Bare-metal RISC-V measured boot — SHA-256 + ML-KEM-768 chain of trust.
+                   Real crypto on real hardware (QEMU). Proof of concept for Caliptra-style
+                   root of trust. 51 KiB binary, zero heap.</p>
+                <div className="tags">
+                  <span className="tag">Rust</span>
+                  <span className="tag">RISC-V</span>
+                  <span className="tag">no_std</span>
+                  <span className="tag">Bare Metal</span>
                 </div>
                 <span className="arrow" aria-hidden="true">→</span>
               </a>
