@@ -111,9 +111,9 @@ Full-stack web development, CI/CD pipelines, and deployment automation.
 | **VIVIA: Beyond the Known** | Rust, wgpu, neural nets, multiplayer | Shipping on EGS |
 | **Talus eBPF Monitor** | Rust, eBPF, aya, FrankenTUI | Production quality |
 | **Externum Language** | Python, compiler, WASM | 120/120 tests |
-| **AURORA OS** | Web OS, React, plugins | Active development |
-| **N2 Mesh** | WebRTC, P2P, MQTT | Deployed |
-| **Cybersec Toolkit** | Rust/Python, networking | Open source |
+| **Aurora** | Web OS, React, plugins | Active development |
+| **Meshcore** | WebRTC, P2P, MQTT | Deployed |
+| **CyberForge** | Rust/Python, networking | Open source |
 
 ---
 

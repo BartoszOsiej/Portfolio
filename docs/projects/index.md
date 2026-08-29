@@ -54,9 +54,9 @@ Three production-grade systems, each solving a hard problem end-to-end.
 | [VIVIA: Beyond the Known](/projects/vivia/) | Rust, wgpu, neural nets | Shipping on EGS | 282 passing |
 | [Talus eBPF Monitor](/projects/talus-process-monitor/) | Rust, eBPF, aya | Production quality | — |
 | [Externum Language](/projects/externum/) | Python, compiler | 120/120 tests | 120 passing |
-| AURORA OS | Web OS, React | Active | — |
-| N2 Mesh (P2P) | WebRTC, MQTT | Deployed | — |
-| Cybersec Toolkit | Rust/Python | Open source | — |
+| Aurora | Web OS, React | Active | — |
+| Meshcore (P2P) | WebRTC, MQTT | Deployed | — |
+| CyberForge | Rust/Python | Open source | — |
 
 ---
 
