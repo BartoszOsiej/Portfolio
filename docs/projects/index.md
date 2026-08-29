@@ -8,7 +8,7 @@ import ScrollReveal from '@site/src/components/ScrollReveal'
 
 # Projects
 
-Three production-grade systems, each solving a hard problem end-to-end.
+Six production-grade systems, each solving a hard problem end-to-end.
 
 ---
 
@@ -43,6 +43,33 @@ Three production-grade systems, each solving a hard problem end-to-end.
   tint="#f59e0b"
 />
 
+<ProjectCard
+  link="/projects/cyberforge/"
+  icon="🔒"
+  title="CyberForge"
+  description="Four Rust security tools as one workspace — port scanner, web scanner, hash cracker, packet analyzer. Each shipped separately on crates.io. 29/29 tests green."
+  tags={['Rust', 'Tokio', 'libpcap', '4 Tools']}
+  tint="#f472b6"
+/>
+
+<ProjectCard
+  link="/projects/quantumshield/"
+  icon="🛡️"
+  title="QuantumShield"
+  description="Post-quantum file encryption CLI — ML-KEM-768 key exchange + AES-256-GCM + HKDF. NIST FIPS 203 compliant, fuzz-tested. Quantum-safe before quantum computers arrive."
+  tags={['Rust', 'Cryptography', 'NIST', 'FIPS 203']}
+  tint="#6366f1"
+/>
+
+<ProjectCard
+  link="/projects/fortis/"
+  icon="🔐"
+  title="Fortis"
+  description="Bare-metal RISC-V measured boot — SHA-256 + ML-KEM-768 chain of trust. Real crypto on real hardware (QEMU). 51 KiB binary, zero heap, no_std."
+  tags={['Rust', 'RISC-V', 'no_std', 'Bare Metal']}
+  tint="#10b981"
+/>
+
 </div>
 
 </ScrollReveal>
@@ -52,11 +79,11 @@ Three production-grade systems, each solving a hard problem end-to-end.
 | Project | Stack | Status | Tests |
 |---|---|---|---|
 | [VIVIA: Beyond the Known](/projects/vivia/) | Rust, wgpu, neural nets | Shipping on EGS | 282 passing |
-| [Talus eBPF Monitor](/projects/talus-process-monitor/) | Rust, eBPF, aya | Production quality | — |
+| [Talus eBPF Monitor](/projects/talus-process-monitor/) | Rust, eBPF, aya | Production quality | 9 passing |
 | [Externum Language](/projects/externum/) | Python, compiler | 120/120 tests | 120 passing |
-| Aurora | Web OS, React | Active | — |
-| Meshcore (P2P) | WebRTC, MQTT | Deployed | — |
-| CyberForge | Rust/Python | Open source | — |
+| [CyberForge](/projects/cyberforge/) | Rust, Tokio, pcap | Open source | 29 passing |
+| [QuantumShield](/projects/quantumshield/) | Rust, crypto, NIST | Open source | 18 passing |
+| [Fortis](/projects/fortis/) | Rust, RISC-V, no_std | Open source | CI-tested |
 
 ---
 
