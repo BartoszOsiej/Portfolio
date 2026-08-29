@@ -9,6 +9,10 @@ import SkillBadge from '@site/src/components/SkillBadge'
 
 # Skills & Technology Stack
 
+<div style={{ textAlign: 'center', margin: '0.5rem 0 2rem', opacity: 0.85, fontSize: '1.05rem' }}>
+Rust · Linux kernel (eBPF) · bare-metal firmware (RISC-V) · security
+</div>
+
 <ScrollReveal>
 
 <div className="stats-row" style={{ marginBottom: '2rem' }}>
@@ -78,6 +82,27 @@ tracepoints, and building userspace TUI dashboards that visualize kernel events.
 
 <ScrollReveal>
 
+## 🧮 Bare-Metal & Firmware
+
+Building bare-metal firmware from the reset vector up, no OS, no heap, no standard library.
+
+<div className="grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '0.8rem', margin: '1.2rem 0' }}>
+<SkillBadge name="RISC-V 64" role="riscv64gc-unknown-none-elf, QEMU virt" icon="🔧" />
+<SkillBadge name="no_std / zero-heap" role="No allocator, no Vec/String, linker script" icon="📦" />
+<SkillBadge name="Boot" role="OpenSBI handoff, _start, BSS clear, S-mode" icon="⚡" />
+<SkillBadge name="MMIO" role="ns16550a UART @ 0x10000000" icon="🖥️" />
+<SkillBadge name="Measured Boot" role="SHA-256 (FIPS 180-4) PCR registers" icon="🔐" />
+<SkillBadge name="Post-Quantum" role="ML-KEM-768 (FIPS 203) decapsulation" icon="🛡️" />
+<SkillBadge name="Chain of Trust" role="Staged verification, attestation report" icon="⛓️" />
+<SkillBadge name="Build" role="Linker scripts, LTO, 51 KiB binary" icon="⚙️" />
+</div>
+
+</ScrollReveal>
+
+---
+
+<ScrollReveal>
+
 ## 🎮 Game Engine Development
 
 Building a commercial voxel engine from scratch: GPU rendering, procedural generation,
@@ -128,9 +153,10 @@ hash utilities, and system monitors.
 <SkillBadge name="Network Recon" role="Port scan, fingerprinting, OS detect" icon="🔍" />
 <SkillBadge name="Forensics" role="Hash analysis, entropy, file carving" icon="🔬" />
 <SkillBadge name="Hardening" role="Input validation, rate limiting" icon="🛡️" />
-<SkillBadge name="Post-Quantum" role="ML-KEM-768, NIST FIPS 203" icon="🔐" />
-<SkillBadge name="Measured Boot" role="SHA-256, PCR registers, attestation" icon="⛓️" />
 </div>
+
+- **Post-quantum** — ML-KEM-768 key exchange, SHA-256 (FIPS 180/203)
+- **Firmware trust** — measured boot, chain of trust, attestation reports
 
 </ScrollReveal>
 
@@ -147,96 +173,6 @@ Full-stack web development, CI/CD pipelines, and deployment automation.
 <SkillBadge name="Backend" role="FastAPI, WebRTC, MQTT" icon="⚙️" />
 <SkillBadge name="DevOps" role="GitHub Actions, Docker, releases" icon="🚀" />
 <SkillBadge name="Databases" role="SQLite, PostgreSQL, Redis" icon="💾" />
-</div>
-
-</ScrollReveal>
-
----
-
-<ScrollReveal>
-
-## 🚀 Flagship Projects
-
-<div className="project-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1rem', margin: '1.4rem 0' }}>
-
-<GlowCard>
-<div style={{ padding: '0.2rem' }}>
-
-### 🎮 VIVIA: Beyond the Known
-Commercial voxel survival engine — procedural world with NASA climate data, embedded neural network, multiplayer TCP, 60-species creature system. **Shipping on Epic Games Store.**
-
-`Rust` `wgpu` `Neural Network` `Multiplayer` `EGS`
-
-**[→ View Project](/projects/vivia/)**
-
-</div>
-</GlowCard>
-
-<GlowCard>
-<div style={{ padding: '0.2rem' }}>
-
-### 🔬 Talus — eBPF Endpoint Security
-eBPF endpoint security agent for Linux — detect ransomware, respond at kernel edge. Tracepoints, perf buffers, sliding-window heuristic, automated SIGKILL, FrankenTUI.
-
-`Rust` `eBPF` `Aya` `FrankenTUI` `Linux Kernel`
-
-**[→ View Project](/projects/talus-process-monitor/)**
-
-</div>
-</GlowCard>
-
-<GlowCard>
-<div style={{ padding: '0.2rem' }}>
-
-### 📜 Externum Language
-Custom programming language compiling to Python, Bash, and binary — REPL, module system, OOP, browser playground via WebAssembly. **120/120 tests.**
-
-`Python` `Compiler` `WebAssembly` `REPL` `120 Tests`
-
-**[→ View Project](/projects/externum/)**
-
-</div>
-</GlowCard>
-
-<GlowCard>
-<div style={{ padding: '0.2rem' }}>
-
-### 🔒 CyberForge
-Four Rust security tools as one workspace — port scanner, web scanner, hash cracker, packet analyzer. Each shipped on crates.io. **29/29 tests.**
-
-`Rust` `Tokio` `libpcap` `4 Tools`
-
-**[→ View Project](/projects/cyberforge/)**
-
-</div>
-</GlowCard>
-
-<GlowCard>
-<div style={{ padding: '0.2rem' }}>
-
-### 🛡️ QuantumShield
-Post-quantum file encryption CLI — ML-KEM-768 key exchange + AES-256-GCM + HKDF. NIST FIPS 203 compliant, fuzz-tested.
-
-`Rust` `Cryptography` `NIST` `FIPS 203`
-
-**[→ View Project](/projects/quantumshield/)**
-
-</div>
-</GlowCard>
-
-<GlowCard>
-<div style={{ padding: '0.2rem' }}>
-
-### 🔐 Fortis
-Bare-metal RISC-V measured boot — SHA-256 + ML-KEM-768 chain of trust. Real crypto on real hardware. 51 KiB binary, zero heap.
-
-`Rust` `RISC-V` `no_std` `Bare Metal`
-
-**[→ View Project](/projects/fortis/)**
-
-</div>
-</GlowCard>
-
 </div>
 
 </ScrollReveal>
