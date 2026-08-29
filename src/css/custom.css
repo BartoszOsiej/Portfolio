@@ -431,6 +431,47 @@
 @keyframes shimmer { to { background-position: 300% 0; } }
 @media (prefers-reduced-motion: reduce) { .animated-title { animation: none; } }
 
+/* ---------- skills page ---------- */
+.skill-category-header {
+  display: flex; align-items: center; gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+.skill-category-header h2 {
+  margin: 0; border: none; padding: 0;
+}
+.skill-category-header h2::before { display: none; }
+
+/* animated gradient border on hover */
+.skill-badge {
+  position: relative; overflow: hidden;
+}
+.skill-badge::before {
+  content: '';
+  position: absolute; inset: 0;
+  border-radius: 12px; padding: 1px;
+  background: linear-gradient(135deg, transparent, rgba(129,140,248,0.3), transparent);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude; -webkit-mask-composite: xor;
+  opacity: 0; transition: opacity 0.3s;
+}
+.skill-badge:hover::before { opacity: 1; }
+
+/* pulsing dot for live stats */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.4); }
+}
+.stat-card .num {
+  position: relative;
+}
+
+/* smooth section dividers */
+.theme-doc-markdown hr {
+  border: none; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(129,140,248,0.3), transparent);
+  margin: 2rem 0;
+}
+
 /* ---------- tests CTA ---------- */
 .tests-cta {
   display: inline-flex; align-items: center; gap: 0.5rem;
