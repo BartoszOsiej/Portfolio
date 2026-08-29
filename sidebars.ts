@@ -39,6 +39,30 @@ const sidebars: SidebarsConfig = {
         'projects/externum/playground',
       ],
     },
+    {
+      type: 'category',
+      label: '🔒 CyberForge',
+      link: { type: 'doc', id: 'projects/cyberforge/index' },
+      items: [
+        'projects/cyberforge/index',
+      ],
+    },
+    {
+      type: 'category',
+      label: '🛡️ QuantumShield',
+      link: { type: 'doc', id: 'projects/quantumshield/index' },
+      items: [
+        'projects/quantumshield/index',
+      ],
+    },
+    {
+      type: 'category',
+      label: '🔐 Fortis',
+      link: { type: 'doc', id: 'projects/fortis/index' },
+      items: [
+        'projects/fortis/index',
+      ],
+    },
   ],
 }
 

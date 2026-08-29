@@ -9,9 +9,9 @@ export default function Home(): React.JSX.Element {
   const viviaUrl = useBaseUrl('/projects/vivia/')
   const ebpfUrl = useBaseUrl('/projects/talus-process-monitor/')
   const externumUrl = useBaseUrl('/projects/externum/')
-  const cyberforgeUrl = 'https://github.com/BartoszOsiej/CyberForge'
-  const quantumshieldUrl = 'https://github.com/BartoszOsiej/quantum-shield'
-  const fortisUrl = 'https://github.com/BartoszOsiej/fortis'
+  const cyberforgeUrl = useBaseUrl('/projects/cyberforge/')
+  const quantumshieldUrl = useBaseUrl('/projects/quantumshield/')
+  const fortisUrl = useBaseUrl('/projects/fortis/')
   const aboutUrl = useBaseUrl('/about/')
   const skillsUrl = useBaseUrl('/skills/')
 
