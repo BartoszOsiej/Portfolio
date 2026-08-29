@@ -110,9 +110,9 @@ const config: Config = {
         {
           title: 'More',
           items: [
-            { label: 'AURORA OS', href: 'https://github.com/BartoszOsiej/AURORA-OS' },
-            { label: 'N2 Mesh (P2P)', href: 'https://github.com/BartoszOsiej/n2-mesh' },
-            { label: 'Cybersec Toolkit', href: 'https://github.com/BartoszOsiej/cybersec-tools' },
+            { label: 'Aurora', href: 'https://github.com/BartoszOsiej/Aurora' },
+            { label: 'Meshcore (P2P)', href: 'https://github.com/BartoszOsiej/Meshcore' },
+            { label: 'CyberForge', href: 'https://github.com/BartoszOsiej/CyberForge' },
           ],
         },
       ],
