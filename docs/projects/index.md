@@ -8,7 +8,7 @@ import ScrollReveal from '@site/src/components/ScrollReveal'
 
 # Projects
 
-Six production-grade systems, each solving a hard problem end-to-end.
+Seven production-grade systems, each solving a hard problem end-to-end.
 
 ---
 
@@ -32,6 +32,15 @@ Six production-grade systems, each solving a hard problem end-to-end.
   description="eBPF endpoint security agent for Linux — detect ransomware behaviour, respond at the kernel edge. execve/openat/connect tracepoints, per-CPU perf buffers, sliding-window heuristic, automated SIGKILL response, FrankenTUI."
   tags={['Rust', 'eBPF', 'Aya', 'FrankenTUI', 'Linux Kernel']}
   tint="#10b981"
+/>
+
+<ProjectCard
+  link="/projects/linux-aegis/"
+  icon="🛡️"
+  title="AEGIS — Linux Security Module"
+  description="In-tree LSM for the Linux kernel — process protection, SHA-256 file integrity, syscall audit, module control. Stacks with capability/Yama/AppArmor, built against upstream torvalds/linux, booted in QEMU."
+  tags={['C', 'Linux Kernel', 'LSM', 'Security']}
+  tint="#6366f1"
 />
 
 <ProjectCard
@@ -80,6 +89,7 @@ Six production-grade systems, each solving a hard problem end-to-end.
 |---|---|---|---|
 | [VIVIA: Beyond the Known](/projects/vivia/) | Rust, wgpu, neural nets | Shipping on EGS | 282 passing |
 | [Talus eBPF Monitor](/projects/talus-process-monitor/) | Rust, eBPF, aya | Production quality | 9 passing |
+| [AEGIS](/projects/linux-aegis/) | C, LSM, Linux kernel | Open source | CI-tested |
 | [Externum Language](/projects/externum/) | Python, compiler | 120/120 tests | 120 passing |
 | [CyberForge](/projects/cyberforge/) | Rust, Tokio, pcap | Open source | 29 passing |
 | [QuantumShield](/projects/quantumshield/) | Rust, crypto, NIST | Open source | 18 passing |

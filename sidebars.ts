@@ -29,6 +29,14 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
+      label: '🛡️ AEGIS',
+      link: { type: 'doc', id: 'projects/linux-aegis/index' },
+      items: [
+        'projects/linux-aegis/index',
+      ],
+    },
+    {
+      type: 'category',
       label: '📜 Externum Language',
       link: { type: 'doc', id: 'projects/externum/index' },
       items: [
