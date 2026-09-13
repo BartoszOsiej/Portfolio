@@ -5,94 +5,86 @@ title: Architecture
 
 # VIVIA — Architecture
 
-## Source Layout
+## Source Layout (as built — matches `Core/Src/` 1:1)
 
 ```
 Core/Src/
-├── main.rs              # Application loop, input, commands
-├── gameplay.rs          # Clock, stats, enemies, animals, quests, crafting
+├── main.rs              # App loop, input, world/actor orchestration
+├── gameplay.rs          # GameClock, PlayerStats, animals, enemies, achievements
 ├── inventory.rs         # Hotbar, inventory slots, stacking
-├── crafting.rs          # NVCrafter recipe system
-├── quests.rs            # Quest chain progression
-├── commands.rs          # Chat commands (/tp, /spawn, /time, etc.)
-├── settings.rs          # SharedSettings (render radius, etc.)
+├── crafting.rs          # RecipeRegistry — shaped & shapeless recipes (NVCrafter)
+├── commands.rs          # Chat commands (/tp, /give, /help, /ai_*)
+├── settings.rs          # SharedSettings (render radius, low_end_pc, perf profiles)
 ├── assets.rs            # Asset loading
 ├── input.rs             # Keyboard/mouse state
-├── audio.rs             # Procedural sound engine
-├── spatial_audio.rs     # 3D spatial audio (Source 2 pattern)
-├── physics.rs           # Collision, gravity
-├── pathfinding.rs       # A* pathfinding for mobs
-├── memory_pool.rs       # Allocation-free hot path
-├── job_system.rs        # Background task scheduler
-├── npcs.rs              # NPC dialogue system
-├── egs.rs               # Epic Online Services bridge
-├── network/
-│   ├── mod.rs           # Packet send/recv
-│   ├── protocol.rs      # Packet definitions, validation
-│   ├── server.rs        # Authoritative server
-│   └── client.rs        # Client with interpolation
+├── interaction.rs       # Block place/break interactions
+├── egs.rs               # Epic Online Services bridge (runtime-loaded, keyless)
 ├── renderer/
-│   ├── mod.rs           # GPU pipeline, draw calls
+│   ├── mod.rs           # GPU pipeline, draw calls, world mesh cache
 │   ├── camera.rs        # First-person camera
-│   ├── texture_atlas.rs # Block texture atlas
-│   ├── geometry.rs      # Procedural 3D primitives
-│   ├── glb.rs           # GLB model loader (decimation, UV bake)
-│   ├── skeleton.rs      # Joint hierarchy, inverse bind
-│   ├── skin.rs          # glTF 2.0 animation engine
-│   ├── anim.rs          # Procedural walk/idle animations
-│   ├── text.rs          # Text rendering
+│   ├── mesh.rs          # Chunk meshing
 │   ├── instance.rs      # Instance buffer management
-│   └── *.wgsl           # GPU shaders (sky, weather, animals, models)
+│   ├── texture_atlas.rs # Block texture atlas
+│   ├── texture_registry.rs # blockname.png / *_side.png conventions
+│   ├── dynamic_atlas.rs # Runtime atlas updates (AI textures)
+│   ├── text.rs          # Text rendering
+│   ├── menu.rs          # Main menu
+│   └── *.wgsl           # Shaders: terrain, sky, weather, animals, text, UI
 └── world/
-    ├── mod.rs           # World state, block access
-    ├── block.rs         # BlockType registry (147+ types)
-    ├── chunk.rs         # 16×512×16 chunk storage
+    ├── mod.rs           # World state, block access, spawn logic
+    ├── block.rs         # BlockType registry (~124 types: hardness, tool tiers)
+    ├── chunk.rs         # 16×512×16 chunk storage (CHUNK_H = 512)
     ├── generator.rs     # OpenSimplex2 terrain generation
-    ├── biomes.rs        # 9 climate-driven biomes
-    ├── vegetation.rs    # Tree/plant placement
+    ├── worldgen.rs      # World generation orchestration
+    ├── biomes.rs        # 9 climate-driven biomes (BiomeId)
+    ├── vegetation.rs    # Tree/plant placement per biome
     ├── decorations.rs   # Decorative elements
-    ├── ai_generator.rs  # MeMLP neural network
+    ├── decoration_ai.rs # AI-driven decoration placement
+    ├── ai_generator.rs  # MeMLP application to world generation
     ├── ai_feedback.rs   # Player preference learning
-    ├── memplp.rs        # Modular MLP architecture
-    ├── online_trainer.rs # Open-Meteo API training data
-    ├── meteo.rs         # Embedded NASA climate data
-    ├── dungeon.rs       # Procedural dungeon generation
+    ├── memplp.rs        # Modular MLP (VEGETATION/BIOME/TEXTURE archs)
+    ├── online_trainer.rs # Open-Meteo API training loop (8 cities)
+    ├── meteo.rs         # Embedded NASA POWER climate grid + seasons
     ├── liquid.rs        # Water/lava simulation
     ├── palette.rs       # Block color palettes
     ├── storage.rs       # Block storage optimization
-    ├── raycast.rs       # Block raycasting
-    └── worldgen.rs      # World generation orchestrator
+    └── raycast.rs       # Block raycasting
 ```
 
 ## Data Flow
 
 ```
-┌──────────┐    ┌──────────┐    ┌──────────┐
-│ OpenSimplex │──►│ Chunk Gen │──►│ GPU Upload │
-│ (heightmap) │   │ (rayon)  │   │ (wgpu)   │
-└──────────┘    └──────────┘    └──────────┘
-                      │
-                ┌─────▼─────┐
-                │ MeMLP AI  │
-                │ (online)  │
-                └───────────┘
+┌──────────────┐    ┌────────────┐    ┌─────────────┐
+│ Seed → coord │───►│ NASA POWER │───►│ Biome table │
+│ (Earth map)  │    │  climatology│   │ + weather   │
+└──────────────┘    └────────────┘    └──────┬──────┘
+                                             │
+┌──────────────┐    ┌────────────┐    ┌──────▼──────┐
+│  GPU upload  │◄───│   Chunk    │◄───│ OpenSimplex2│
+│  (wgpu)      │    │  meshing   │    │ + MeMLP veg │
+└──────────────┘    └────────────┘    └─────────────┘
 ```
 
 ## Chunk Lifecycle
 
 1. **Request** — player position triggers chunk generation requests
-2. **Generate** — OpenSimplex2 heightmap + cave/ore placement + vegetation
-3. **Decorate** — AI-driven vegetation, decorations, dungeon chests
-4. **Upload** — vertex/index buffers to GPU
-5. **Render** — instanced draw call per chunk
-6. **Unload** — chunks beyond render distance are evicted
+2. **Generate** — OpenSimplex2 heightmap + cave/ore placement (rayon-parallel)
+3. **Decorate** — climate-driven vegetation, AI decoration placement
+4. **Mesh + Upload** — chunk meshing, vertex/index buffers to GPU
+5. **Render** — instanced draw calls per chunk
+6. **Unload** — chunks beyond `cleanup_radius` are evicted
 
 ## Block Registry
 
-147+ block types, each with:
-- Hardness (mining time)
-- Tool tier (wood → stone → iron → diamond)
-- Texture (16×16 PNG or procedural fallback)
-- Model (13 block models: stairs, slabs, logs, etc.)
-- Drops (what the player gets when mining)
-- Fluid properties (water/lava propagation)
+~124 block types (`BlockType`), each with:
+- Hardness (`hardness()`) — mining time
+- Tool tier (`required_tool_tier()`) — wood → stone → iron → diamond
+- Display name — inventory tooltip
+- Special interactions (Chest, NVCrafter, Cactus break-speed rules)
+
+## What is intentionally NOT here yet
+
+Multiplayer networking, quest system, spatial audio, GLB model pipeline and
+pathfinding are **designed but not implemented** — see the roadmap on the
+[index](.) and the multiplayer protocol design page. This document
+describes only code that exists in the repository.

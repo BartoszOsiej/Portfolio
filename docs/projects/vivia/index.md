@@ -6,30 +6,31 @@ title: VIVIA — Beyond the Known
 import ScrollReveal from '@site/src/components/ScrollReveal'
 import GlowCard from '@site/src/components/GlowCard'
 
-<a class="tests-cta" href="./tests">🧪 282 tests passing →</a>
+<a class="tests-cta" href="https://github.com/BartoszOsiej/NV2_ENGINE">🧪 132 tests green →</a>
 
 # VIVIA: Beyond the Known
 
-> **A commercial voxel survival sandbox with AI-powered terrain, multiplayer networking,
-> and a custom embedded neural network — built from scratch in Rust. Shipping on
-> Epic Games Store, August 2026.**
+> **A voxel survival sandbox with real-world climate (NASA POWER data) and an embedded
+> neural network that learns while you play — built from scratch in Rust.
+> EGS submission kit is ready; release date TBA.**
 
 <ScrollReveal>
 
 ## Overview
 
-VIVIA (internally `NV_ENGINE`) is a **shipped commercial voxel game** written entirely
-in Rust — 47 source files, 15,800+ lines, 282 tests. It features:
+VIVIA (internally `NV2_ENGINE`, store name **NV-2.0**) is a commercial voxel game written
+entirely in Rust — 39 source files, 24,000+ lines, 132 tests. It features:
 
-- **Procedural world generation** with real-world NASA climate data
-- **Embedded neural network** (MeMLP) that learns vegetation placement while you play
-- **Full mob system** with AI-generated 3D models, 10 hostile types, 60 animal species
-- **Multiplayer TCP networking** with entity sync, chunk streaming, anti-cheat
-- **Procedural audio** engine with spatial 3D sound
-- **GPU rendering** via wgpu with custom WGSL shaders
+- **Real climate worlds** — every seed maps to a location on Earth; NASA POWER climatology drives biomes, weather and sky
+- **Embedded neural network** (MeMLP) that learns vegetation, biome and texture decisions while you play
+- **Day/night survival** — hunger, thirst, health; hostiles spawn after dark
+- **Wildlife** — deer and rabbits roaming climate-appropriate biomes, 4 hostile types at night
+- **Crafting** — shaped & shapeless recipe registry, tools and progression
+- **Procedural rendering** — wgpu pipeline with sky, weather and animated creatures
+- **Keyless Epic Games Store support** — EOS SDK loaded at runtime, clean no-op without it
 
-**Developer:** Terra Nova Gameworks · **Version:** 1.0.0 · **Price:** $9.99 (launch $7.49)
-**Platforms:** Linux, Windows · **Stores:** Epic Games Store, itch.io
+**Developer:** Terra Nova Gameworks · **Build:** 1.0.0
+**Platforms:** Linux, Windows · **Stores:** Epic Games Store (kit ready), itch.io (planned)
 
 </ScrollReveal>
 
@@ -41,14 +42,12 @@ in Rust — 47 source files, 15,800+ lines, 282 tests. It features:
 | GPU | wgpu 0.20, WGSL shaders |
 | Window | winit 0.30 |
 | Math | cgmath 0.18, OpenSimplex2 |
-| Parallelism | rayon, tokio |
+| Parallelism | rayon (async chunk gen) |
 | Neural Net | ndarray (MeMLP embedded MLP) |
-| Mesh Opt | meshopt, bincode |
-| Audio | rodio |
+| Climate | Embedded NASA POWER grid + Open-Meteo API |
 | Text | fontdue |
-| ECS | bytemuck |
-| Online | Epic Online Services |
-| Tools | C#/.NET 8 (content), Python (AI/texture) |
+| Store | Epic Online Services (runtime-loaded, keyless) |
+| Tools | Python (AI/texture pipeline), Externum (manifest tooling) |
 
 ---
 
@@ -61,10 +60,10 @@ in Rust — 47 source files, 15,800+ lines, 282 tests. It features:
 <GlowCard>
 <div>
 
-### 🌍 Procedural World
+### 🌍 Real-Climate Worlds
 OpenSimplex2 heightmaps, caves, ores, 9 climate-driven biomes. 16×512×16 chunks
-with async streaming and rayon parallel generation. Real-world NASA temperature
-and humidity data drive vegetation, fog, and ambient color.
+with rayon-parallel generation. Embedded NASA POWER temperature and humidity
+data drive vegetation, weather and ambient sky.
 
 </div>
 </GlowCard>
@@ -73,9 +72,9 @@ and humidity data drive vegetation, fog, and ambient color.
 <div>
 
 ### 🧠 MeMLP Neural Network
-Modular embedded MLP with 4 specialist heads: vegetation (8→24→16→4), biome
-classification (8→12→9), texture style (8→12→6), and creature animation (8→16→6).
-Learns online during gameplay from synthetic + Open-Meteo API data. 0.01ms inference.
+Modular embedded MLP with 3 specialist heads: vegetation placement (8→24→16→4),
+biome classification (8→12→9), texture style (8→12→6). Learns online during
+gameplay from synthetic + Open-Meteo API data. ~1,100 parameters, sub-0.1 ms inference.
 
 </div>
 </GlowCard>
@@ -84,9 +83,9 @@ Learns online during gameplay from synthetic + Open-Meteo API data. 0.01ms infer
 <div>
 
 ### 🎨 Procedural Rendering
-Custom wgpu pipeline: instanced voxel geometry, per-fragment lighting (Blinn-Phong),
-ACES tonemapping, procedural sky with sun/moon, fog, weather, day/night cycle.
-GLB model loading with automatic decimation and procedural skinning.
+Custom wgpu pipeline: instanced voxel geometry, per-fragment lighting,
+procedural sky with sun/moon, rain/snow particles, day/night cycle.
+Animated voxel creatures with walk cycles.
 
 </div>
 </GlowCard>
@@ -94,10 +93,9 @@ GLB model loading with automatic decimation and procedural skinning.
 <GlowCard>
 <div>
 
-### 🦠 60 Creature Species
-Full bestiary: 10 hostile types with AI-driven behavior (melee, ranged, combo, slam),
-and 60 passive animal species across 8 biomes. Each species has unique body, color,
-speed, walk cycle, and loot drops. AI-generated GLB models with pose fixes.
+### 🦌 Living World
+Deer and rabbits spawn in matching biomes; four hostile types (zombie, skeleton,
+spider, creeper) emerge after dark. Kill rewards feed crafting progression.
 
 </div>
 </GlowCard>
@@ -105,10 +103,9 @@ speed, walk cycle, and loot drops. AI-generated GLB models with pose fixes.
 <GlowCard>
 <div>
 
-### 🌐 Multiplayer
-TCP networking at 20 Hz: entity sync, chunk streaming, block updates, chat,
-combat events. Anti-cheat validation (coordinate bombs, NaN positions, rate limiting,
-handshake timeouts). Client-side interpolation for smooth remote player movement.
+### 🛠️ Survival & Crafting
+Hunger/thirst/health stats with regeneration rules, mining with tool tiers,
+shaped & shapeless crafting recipes, item drops, save/load.
 
 </div>
 </GlowCard>
@@ -116,10 +113,10 @@ handshake timeouts). Client-side interpolation for smooth remote player movement
 <GlowCard>
 <div>
 
-### ⚔️ Survival Gameplay
-Hunger/thirst/warmth systems, tool durability, crafting (NVCrafter), quest chains,
-rarity tiers (Common → Mythic), prestige system (Lv50+ reset with stacking bonuses),
-and RPG progression with stat allocation.
+### 🕹️ Console & Commands
+In-game chat commands: `/tp`, `/give`, `/help` plus the AI toolkit —
+`/ai_stats`, `/ai_export`, `/ai_import`, `/ai_dataset` (model bundles are
+portable JSON with author metadata).
 
 </div>
 </GlowCard>
@@ -136,27 +133,30 @@ and RPG progression with stat allocation.
 ├──────────────┬──────────────┬───────────────────────┤
 │   Renderer   │   World Gen  │     Game Logic        │
 │  wgpu + WGSL │  OpenSimplex │  Survival + Combat    │
-│  Instancing  │  9 Biomes    │  60 Creatures         │
-│  ACES Tonemap│  Caves/Ores  │  Quests + Crafting    │
+│  Instancing  │  9 Biomes    │  Wildlife + Hostiles  │
+│  Sky/Weather │  Caves/Ores  │  Crafting + Items     │
 ├──────────────┼──────────────┼───────────────────────┤
-│   AI Stack   │   Audio      │     Networking        │
-│  MeMLP (4)   │  rodio       │  TCP 20 Hz            │
-│  Online train│  Spatial 3D  │  Entity/Chunk sync    │
-│  GLB models  │  Procedural  │  Anti-cheat           │
+│   AI Stack   │   Climate    │     Store/Platform    │
+│  MeMLP (3)   │  NASA POWER  │  EOS runtime (keyless)│
+│  Online train│  Open-Meteo  │  EGS kit + manifests  │
+│  Model share │  Seasons     │  Low-end PC mode      │
 └──────────────┴──────────────┴───────────────────────┘
 ```
 
-## Performance
+## Testing
 
-| Metric | Value |
-|---|---|
-| Frame time | 16.6 ms (60 FPS target) |
-| AI inference | 0.01 ms per prediction |
-| Chunk generation | Async, rayon-parallel |
-| Model decimation | 40K → 6K triangles per mob |
-| Memory model | 1.2 KB neural network |
-| Instance budget | 2048 cubes, 256 AI meshes |
+132 tests (`cargo test --release`: 131 passed, 1 ignored release benchmark) covering
+world generation determinism, climate realism (`embedded_grid_matches_known_real_climates`),
+MeMLP forward/training/NaN-survival, crafting flows, raycasting and vegetation rules.
+A reproducible benchmark framework (frame-time variance, meshing latency) ships in
+[`BENCHMARKING.md`](https://github.com/BartoszOsiej/NV2_ENGINE/blob/main/BENCHMARKING.md).
+
+## Roadmap (honest list — not in the build yet)
+
+Multiplayer (TCP protocol designed), GLB model pipeline for AI-generated creatures,
+spatial audio, quest chains and boss fights. See [Multiplayer (planned)](./multiplayer)
+for the protocol design. **Nothing on this page claims a feature the code doesn't have.**
 
 ---
 
-**See also:** [Architecture](./architecture) · [AI Engine](./ai-engine) · [Rendering](./rendering) · [Multiplayer](./multiplayer) · [Gameplay](./gameplay) · [Performance](./performance)
+**See also:** [Architecture](./architecture) · [AI Engine](./ai-engine) · [Rendering](./rendering) · [Multiplayer (planned)](./multiplayer) · [Gameplay](./gameplay) · [Performance](./performance)

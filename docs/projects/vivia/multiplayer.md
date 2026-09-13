@@ -1,71 +1,62 @@
 ---
 sidebar_position: 5
-title: Multiplayer Networking
+title: Multiplayer — Protocol Design (planned)
 ---
 
-# VIVIA — Multiplayer Networking
+# VIVIA — Multiplayer Networking (DESIGN, NOT SHIPPED)
 
-## Protocol
+> ⚠️ **Status: designed, not implemented.** Nothing in this document exists in the
+> current build — there is no networking code in the repository yet. This page
+> publishes the protocol design so it can be reviewed before implementation.
+> Single-player is fully functional today.
 
-TCP-based protocol at **20 Hz** with bincode serialization:
+## Design Goals
+
+- **Authoritative server** in Rust (tokio) — clients never mutate world state directly
+- **TCP** with `bincode` serialization, fixed **20 Hz** tick for entity sync
+- **Anti-cheat from day one** — server validates every packet against world state
+
+## Protocol Sketch
 
 ### Client → Server
 
 | Packet | Description |
 |---|---|
-| `Join` | Player name, handshake |
-| `PlayerInput` | Position, yaw, flying, sprinting |
-| `BlockBreak` | Block coordinates |
-| `BlockPlace` | Block coordinates + type |
+| `Join` | Player name, handshake, protocol version |
+| `PlayerInput` | Position, yaw, flying, sprinting (validated server-side) |
+| `BlockBreak` | Block coordinates (checked against reach + hardness) |
+| `BlockPlace` | Block coordinates + type (inventory validated) |
 | `Attack` | Melee reach distance |
 | `Chat` | Message text |
-| `RequestChunks` | Chunk coordinate list |
-| `DamageEntity` | Entity ID + damage amount |
+| `RequestChunks` | Chunk coordinate list (rate-limited) |
 | `PingRTT` | Timestamp for RTT measurement |
 
 ### Server → Client
 
 | Packet | Description |
 |---|---|
-| `Welcome` | Player ID, spawn, seed, tick rate |
-| `Chunk` | Block data (compressed) |
-| `PlayerUpdate` | Other player positions |
-| `EntityBatch` | Bulk mob updates |
-| `EntitySpawn` / `EntityDespawn` | Mob lifecycle |
-| `BlockUpdate` | Block changes from other players |
-| `StatsSync` | Server-authoritative stats |
-| `CombatEvent` | Damage, knockback, enrage |
-| `ServerTick` | Day time, night, blood moon |
-| `PlayerList` | Connected players |
-| `ServerChat` | System/player messages |
+| `Welcome` | Player ID, spawn point, seed, tick rate |
+| `ChunkData` | Compressed chunk (16×512×16) |
+| `EntitySnapshot` | Creature + player states at tick |
+| `BlockUpdate` | Single-block delta |
+| `ChatRelay` | Chat messages |
+| `Kick` | Reason string |
 
-## Anti-Cheat
+## Anti-Cheat Validation Plan
 
-- **Name sanitisation** — max 24 chars, no control characters
-- **Chat sanitisation** — max 256 chars, control chars stripped
-- **Block coordinate validation** — ±16,384 X/Z, 0..512 Y
-- **Position validation** — finite, ±1,000,000 (rejects NaN/Inf/teleport bombs)
-- **Rate limiting** — >120 packets/sec → disconnect
-- **Handshake timeout** — 10s anti-slowloris
-- **Pending connection limit** — 64 max pre-handshake
+- **Coordinate bombs** — reject positions beyond plausible movement per tick
+- **NaN positions** — reject any non-finite coordinate
+- **Rate limiting** — per-packet-type budgets (chunk requests especially)
+- **Handshake timeouts** — drop clients that never complete `Join`
+- **Server-side reach checks** — block interactions beyond reach are rejected
 
-## Client-Side Interpolation
+## Client-Side Interpolation Plan
 
-Remote players and entities are interpolated between updates:
-- Each update stores previous position + new position
-- Interpolation factor `t` advances with delta time
-- Position = lerp(prev, new, t) for smooth movement at any frame rate
+Remote players get buffered snapshots (100 ms buffer) and interpolate between the
+two most recent — the same approach used by Quake 3 source and modern shooters.
 
-## Chunk Streaming
+## Why publish a design before the code exists?
 
-- **View distance:** 8 chunks radius
-- **Backpressure:** max 4 chunks sent per tick per client
-- **Dedup:** client sends `ChunkAck`, server skips already-sent chunks
-- **Request filtering:** client doesn't re-request cached chunks
-
-## Server Architecture
-
-- **Authoritative:** server owns all entity HP, positions, block state
-- **Broadcast:** all state changes broadcast to all clients
-- **Per-entity sync:** only entities within `ENTITY_SYNC_RADIUS` (48m) are synced
-- **Despawn radius:** entities beyond 64m are despawned on client
+Because the protocol is the contract. Feedback on tick rate, compression and
+anti-cheat windows is cheap now and expensive after implementation. If you have
+opinions — the [repo](https://github.com/BartoszOsiej/NV2_ENGINE) has discussions open.
