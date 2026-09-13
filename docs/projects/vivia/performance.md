@@ -5,22 +5,13 @@ title: Performance
 
 # VIVIA — Performance
 
-## Benchmarks (reproducible framework)
+## Benchmarks
 
-The repo ships a real benchmarking harness —
+Benchmark targets and methodology are specified in
 [`BENCHMARKING.md`](https://github.com/BartoszOsiej/NV2_ENGINE/blob/main/BENCHMARKING.md)
-with Criterion benches and a headless frame-time mode:
-
-```bash
-# Full benchmark suite
-cargo bench --bench render_bench -- --output-format markdown
-
-# Quick frame-time measurement (60 seconds)
-cargo run --release -- --headless --bench-frame --frames 3600 --quit
-
-# Meshing benchmark only
-cargo bench --bench mesh_bench -- "greedy"
-```
+(frame-time variance, voxel meshing latency, rendering throughput). The Criterion
+harness implementing them is specified there and lands in the repo before launch —
+until then, treat the numbers below as **targets, not measurements**.
 
 ### Targets
 
@@ -30,8 +21,7 @@ cargo bench --bench mesh_bench -- "greedy"
 | 99th percentile frame time | < 33 ms (30 FPS floor) |
 
 The engine is built to hit these budgets: no per-frame allocations on the hot
-path, allocation-free world interactions (`memory_pool`-style patterns in the
-hot loop), rayon-parallel chunk generation off the render thread.
+path, rayon-parallel chunk generation off the render thread.
 
 ## MeMLP Inference
 
@@ -62,7 +52,7 @@ The AI runs on a background thread — training never blocks the frame loop.
 
 ## The honest footnote
 
-Where this page gives a number without a benchmark link, treat it as an
-approximation on dev hardware (Arch Linux, mid-range GPU). The Criterion
-harness exists precisely so every number above can be reproduced — and the
-store page will only publish numbers that come out of it.
+Every number on this page is either a **target** (frame times, to be measured by
+the harness) or an **approximation on dev hardware** (Arch Linux, mid-range GPU).
+The harness spec exists precisely so every claim can be reproduced — and the
+store page will only publish numbers measured by it.

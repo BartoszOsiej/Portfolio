@@ -148,8 +148,9 @@ portable JSON with author metadata).
 132 tests (`cargo test --release`: 131 passed, 1 ignored release benchmark) covering
 world generation determinism, climate realism (`embedded_grid_matches_known_real_climates`),
 MeMLP forward/training/NaN-survival, crafting flows, raycasting and vegetation rules.
-A reproducible benchmark framework (frame-time variance, meshing latency) ships in
-[`BENCHMARKING.md`](https://github.com/BartoszOsiej/NV2_ENGINE/blob/main/BENCHMARKING.md).
+Benchmark targets (frame-time variance, meshing latency) are specified in
+[`BENCHMARKING.md`](https://github.com/BartoszOsiej/NV2_ENGINE/blob/main/BENCHMARKING.md);
+the Criterion harness lands in the repo before launch.
 
 ## Roadmap (honest list — not in the build yet)
 
