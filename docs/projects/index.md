@@ -29,8 +29,8 @@ Seven production-grade systems, each solving a hard problem end-to-end.
   link="/projects/talus-process-monitor/"
   icon="🔬"
   title="Talus — eBPF Endpoint Security Agent"
-  description="eBPF endpoint security agent for Linux — detect ransomware behaviour, respond at the kernel edge. execve/openat/connect tracepoints, per-CPU perf buffers, sliding-window heuristic, automated SIGKILL response, FrankenTUI."
-  tags={['Rust', 'eBPF', 'Aya', 'FrankenTUI', 'Linux Kernel']}
+  description="eBPF endpoint security agent for Linux — detect ransomware behaviour, respond at the kernel edge. execve/openat/connect tracepoints, per-CPU perf buffers, sliding-window heuristic, automated SIGKILL response, FrankenTUI. Commercial edition: Ed25519-signed licenses with a live activation backend."
+  tags={['Rust', 'eBPF', 'Aya', 'FrankenTUI', 'Linux Kernel', 'Licensing']}
   tint="#10b981"
 />
 
@@ -88,7 +88,7 @@ Seven production-grade systems, each solving a hard problem end-to-end.
 | Project | Stack | Status | Tests |
 |---|---|---|---|
 | [VIVIA: Beyond the Known](/projects/vivia/) | Rust, wgpu, neural nets | Shipping on EGS | 282 passing |
-| [Talus eBPF Monitor](/projects/talus-process-monitor/) | Rust, eBPF, aya | Production quality | 9 passing |
+| [Talus eBPF Monitor](/projects/talus-process-monitor/) | Rust, eBPF, aya | Production quality | 95 passing |
 | [AEGIS](/projects/linux-aegis/) | C, LSM, Linux kernel | Open source | CI-tested |
 | [Externum Language](/projects/externum/) | Python, compiler | 120/120 tests | 120 passing |
 | [CyberForge](/projects/cyberforge/) | Rust, Tokio, pcap | Open source | 29 passing |

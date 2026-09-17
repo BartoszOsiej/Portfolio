@@ -33,7 +33,9 @@ procedural audio, and a 60-species creature system with AI-generated 3D models.
 security agent for Linux — kernel-side tracepoints capture `execve`/`openat`/`connect`/
 `accept`/`sendto`/`recvfrom`, stream events into userspace through per-CPU perf buffers,
 a sliding-window heuristic detects ransomware behavior, and automated `SIGKILL` response
-terminates offending processes. Built with `#![no_std]` Rust on nightly, FrankenTUI.
+terminates offending processes. Built with `#![no_std]` Rust on nightly and FrankenTUI,
+with a commercial edition built on Ed25519-signed license keys and a Cloudflare
+Workers + D1 activation backend (seat enforcement, revocation, rate limiting).
 
 **Programming Languages.** [Externum](/projects/externum/) is a custom language that
 compiles to Python, Bash, and binary — with a REPL, module system, standard library,

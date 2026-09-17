@@ -91,6 +91,17 @@ and graceful degradation under load. No data leaves the machine.
 </div>
 </GlowCard>
 
+<GlowCard>
+<div>
+
+### ◆ Commercial Licensing
+Enterprise features are unlocked by Ed25519-signed license keys. The binary
+embeds only the public key; a Cloudflare Worker + D1 activation backend
+(free tier) enforces expiry, revocation and seat limits server-side.
+
+</div>
+</GlowCard>
+
 </div>
 
 </ScrollReveal>
@@ -141,6 +152,7 @@ and graceful degradation under load. No data leaves the machine.
 | Userspace | Rust stable, aya |
 | TUI | FrankenTUI (ftui) |
 | Perf reader | aya-ebpf perf buffer API |
+| Licensing | Ed25519 (ed25519-dalek), Cloudflare Workers + D1 activation backend |
 | Target | Linux 5.8+ (eBPF + tracepoint support) |
 
 ## Requirements
@@ -149,6 +161,38 @@ and graceful degradation under load. No data leaves the machine.
 - **root** (`CAP_BPF` / `CAP_SYS_ADMIN`) to load eBPF programs
 - Rust **nightly** + `rust-src` for the eBPF crate
 - Rust **stable** for the userspace TUI
+
+## Licensing & Editions
+
+Talus ships in two editions. **Community** is free and MIT-licensed;
+**Enterprise** (auto-kill, web dashboard, Kafka, ClickHouse, MemGraph, C FFI)
+is unlocked by a paid license key.
+
+```
+talus-keygen issue ──► signed key (Ed25519) ──► customer
+                                                │
+                                      talus license activate <KEY>
+                                                ▼
+            Cloudflare Worker + D1 (free tier) ── signature check,
+            expiry, revocation, seat limits ──► activation token
+```
+
+- The binary embeds the Ed25519 **public** key only; the signing key never
+  leaves the owner's machine
+- The activation server verifies signatures server-side, enforces expiry,
+  revocation and seat limits, and rate-limits activation attempts
+- The local license cache is re-verified against the signed key on every
+  start — local edits to tier/expiry/features fail closed
+- 30-day Enterprise trial on first run; 30-day offline grace afterwards
+
+```bash
+talus license activate <KEY>   # one key = one machine
+talus license show             # tier, expiry, seats, features
+```
+
+Pricing amounts are set per sale and never published in the repos — the
+structure lives in the repo's
+[docs/pricing-tiers.md](https://github.com/BartoszOsiej/talus-process-monitor/blob/master/docs/pricing-tiers.md).
 
 ---
 

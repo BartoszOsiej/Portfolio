@@ -20,7 +20,7 @@
 | | Projekt | Stack |
 |---|---------|-------|
 | 🧬 | **VIVIA: Beyond the Known** — komercyjny silnik voxelowy z neural terrain | Rust · wgpu · sieci neuronowe |
-| 🔬 | **Talus — eBPF Endpoint Security** — wykrywaj ransomware, reaguj na krawędzi jądra | Rust · eBPF · aya |
+| 🔬 | **Talus — eBPF Endpoint Security** — wykrywaj ransomware, reaguj na krawędzi jądra; edycja komercyjna z licencjami Ed25519 + backendem aktywacji na Cloudflare | Rust · eBPF · aya · Workers/D1 |
 | ⚡ | **Externum Language** — własny język programowania, trzy targety kompilacji | Python · kompilator · WebAssembly |
 
 ## Tech

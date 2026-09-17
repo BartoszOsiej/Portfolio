@@ -103,13 +103,15 @@ export default function Home(): React.JSX.Element {
                 <p>eBPF endpoint security agent for Linux — detect ransomware behaviour,
                    respond at the kernel edge. Kernel-side tracepoints (aya-ebpf),
                    per-CPU perf buffers, sliding-window heuristic, automated SIGKILL
-                   response, and a 7-panel FrankenTUI dashboard.</p>
+                   response, and a 7-panel FrankenTUI dashboard. Commercial edition
+                   with Ed25519-signed license keys and a live activation backend.</p>
                 <div className="tags">
                   <span className="tag">Rust</span>
                   <span className="tag">eBPF</span>
                   <span className="tag">Aya</span>
                   <span className="tag">FrankenTUI</span>
                   <span className="tag">Linux Kernel</span>
+                  <span className="tag">Licensing</span>
                 </div>
                 <span className="arrow" aria-hidden="true">→</span>
               </a>
